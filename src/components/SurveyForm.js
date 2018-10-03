@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { observer, observable, action } from 'mobx';
 
+@observer
 export default class SurveyForm extends Component {
-  state = {
-    surveyInputText: '',
-  };
+  @observable
+  surveyInputText = '';
 
+  @action
   handleChange = e => {
     this.setState({ surveyInputText: e.target.value });
   };
 
+  @action
   handleTextInputSubmit = e => {
     console.log(this.state.surveyInputText);
     e.preventDefault();
@@ -25,7 +28,7 @@ export default class SurveyForm extends Component {
             <input
               type="text"
               name="name"
-              value={this.state.surveyInputText}
+              value={this.surveyInputText}
               onChange={this.handleChange}
             />
           </label>
