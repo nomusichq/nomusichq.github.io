@@ -6,12 +6,12 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const config = {
-  apiKey: 'AIzaSyCVs37OGEDlUKV7HjNjafLWVExLcu_gG0M',
-  authDomain: 'nomusic-web.firebaseapp.com',
-  databaseURL: 'https://nomusic-web.firebaseio.com',
-  projectId: 'nomusic-web',
-  storageBucket: '',
-  messagingSenderId: '834312253465',
+  apiKey: process.env.APP_APIKEY,
+  authDomain: process.env.APP_AUTHDOMAIN,
+  databaseURL: process.env.APP_DATABASEURL,
+  projectId: process.env.APP_PROJECTID,
+  storageBucket: process.env.APP_STORAGEBUCKET,
+  messagingSenderId: process.env.APP_MESSAGINGSENDERID,
 };
 firebase.initializeApp(config);
 
