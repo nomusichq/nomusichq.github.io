@@ -1,32 +1,18 @@
 import React, { Component } from 'react';
-import { observable, action } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
+@inject('surveyForm')
 @observer
 class SurveyForm extends Component {
-  @observable
-  surveyFormText = '';
-
-  @action
-  handleTextInputChange = e => {
-    this.surveyFormText = e.target.value;
-  };
-
-  @action
-  handleSurveyTextSubmit = e => {
-    console.log(this.surveyFormText);
-    this.surveyFormText = '';
-    e.preventDefault();
-  };
-
   render() {
+    const { surveyForm } = this.props;
     return (
-      <form onSubmit={this.handleSurveyTextSubmit}>
+      <form onSubmit={e => surveyForm.handleSurveyTextSubmit(e)}>
         <label>Hey No Club!</label>
         <input
           type="text"
-          value={this.surveyFormText}
-          onChange={this.handleTextInputChange}
+          value={surveyForm.surveyFormText}
+          onChange={e => surveyForm.handleTextInputChange(e)}
         />
         <input type="submit" />
       </form>
