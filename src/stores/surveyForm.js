@@ -14,8 +14,10 @@ export default class SurveyFormStore {
 
   @action
   handleSurveyTextSubmit(e) {
-    console.log(this.surveyFormText);
-    this.surveyFormText = '';
+    if (this.surveyFormText) {
+      this.surveys.push(this.surveyFormText);
+      this.surveyFormText = '';
+    }
     e.preventDefault();
   }
 }
