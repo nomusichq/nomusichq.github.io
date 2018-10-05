@@ -4,6 +4,9 @@ export default class SurveyFormStore {
   @observable
   surveyFormText = '';
 
+  @observable
+  surveys = [];
+
   @action
   handleTextInputChange(e) {
     this.surveyFormText = e.target.value;

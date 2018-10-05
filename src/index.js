@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import WebFont from 'webfontloader';
 
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import App from './App';
 import SurveyFormStore from './stores/surveyForm';
 
 WebFont.load({
