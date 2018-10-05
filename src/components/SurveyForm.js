@@ -23,7 +23,12 @@ class SurveyForm extends Component {
           <Box>
             <input
               type="text"
-              style={{ width: '300px', height: '28px', fontSize: '20px' }}
+              style={{
+                width: '300px',
+                height: '30px',
+                fontSize: '20px',
+                verticalAlign: 'middle',
+              }}
               value={surveyForm.surveyFormText}
               onChange={e => surveyForm.handleTextInputChange(e)}
             />
@@ -31,6 +36,7 @@ class SurveyForm extends Component {
             <Button
               bg="black"
               ml={2}
+              css={{ verticalAlign: 'middle' }}
               onClick={e => surveyForm.handleSurveyTextSubmit(e)}
             >
               <GothicA1Text>Submit</GothicA1Text>
