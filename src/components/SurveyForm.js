@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-
+import styled from 'styled-components';
 import { Box, Button, Card, Image, Heading, Text } from 'rebass';
 
 const GothicA1Text = props => (
@@ -9,48 +9,70 @@ const GothicA1Text = props => (
   </Text>
 );
 
+const SurveyBox = styled.div`
+  padding: 40px;
+`;
+
+const Input = styled.input`
+  width: 50vw;
+  height: 48px;
+  font-size: 4vh;
+  vertical-align: middle;
+  border-style: none;
+  border-bottom: solid 7px;
+  padding-right: -10px;
+`;
+
+const SubmitButton = styled.button.attrs({
+  type: 'submit',
+})`
+  vertical-align: middle;
+  color: white;
+  padding: 10px 20px;
+  background: black;
+  font-size: 2em;
+  border: solid #fff;
+`;
+
+const WordCounter = styled.div`
+  position: relative;
+  margin-top: 4px;
+  font-family: 'Gothic A1';
+  font-weight: 400;
+  font-size: 12px;
+`;
+
 @inject('surveyForm')
 @observer
 class SurveyForm extends Component {
   render() {
     const { surveyForm } = this.props;
     return (
-      <Card>
+      <SurveyBox>
         <form onSubmit={e => surveyForm.handleSurveyTextSubmit(e)}>
-          <Heading fontSize={5}>
-            <GothicA1Text>노클럽에게 하고 싶은 말 있으면 해라</GothicA1Text>
+          <Heading fontSize={6}>
+            <GothicA1Text>노클럽에게 하고 싶은 말</GothicA1Text>
           </Heading>
-          <Box>
-            <input
+          <div>
+            <Input
               type="text"
-              style={{
-                width: '300px',
-                height: '30px',
-                fontSize: '20px',
-                verticalAlign: 'middle',
-              }}
               value={surveyForm.surveyFormText}
               onChange={e => surveyForm.handleTextInputChange(e)}
             />
-            {/* <input type="submit" /> */}
-            <Button
-              bg="black"
-              ml={2}
-              css={{ verticalAlign: 'middle' }}
-              onClick={e => surveyForm.handleSurveyTextSubmit(e)}
-            >
-              <GothicA1Text>Submit</GothicA1Text>
-            </Button>
-          </Box>
+            <SubmitButton>Submit</SubmitButton>
+            <WordCounter>
+              {surveyForm.surveyFormText.length + '/140'}
+            </WordCounter>
+          </div>
         </form>
         <Box>
           {surveyForm.surveys.map((survey, index) => (
-            <GothicA1Text key={index} m={10} fontSize={3}>
-              {survey}
+            <GothicA1Text key={index} mt={30} fontSize={5}>
+              {survey} ({survey.length})
             </GothicA1Text>
           ))}
         </Box>
-      </Card>
+      </SurveyBox>
     );
   }
 }

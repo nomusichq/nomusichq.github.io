@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Bar from './components/Bar';
+import './App.css';
 
-import SurveyForm from './components/SurveyForm';
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <SurveyForm />
+        <Bar />
       </div>
     );
   }
