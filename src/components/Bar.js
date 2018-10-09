@@ -64,10 +64,10 @@ class Bar extends Component {
           Math.pow(height - scrollBarY - 20, 2) +
             Math.pow(width - scrollBarX - 20, 2)
         )
-      )}px`,
+      ) - 2}px`,
       background: 'black',
       position: 'fixed',
-      top: '8px',
+      top: '10px',
       left: '2px',
       transformOrigin: 'center top',
       transform: `rotate(-${rotateDeg}deg)`,
