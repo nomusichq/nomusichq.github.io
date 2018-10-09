@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import WebFont from 'webfontloader';
-
+import 'normalize.css';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import SurveyFormStore from './stores/surveyForm';
