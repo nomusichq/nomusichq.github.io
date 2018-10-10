@@ -118,5 +118,8 @@
       "react-app",
       "mobx"
     ]
+  },
+  "devDependencies": {
+    "jest-dom": "^2.0.4"
   }
 }
