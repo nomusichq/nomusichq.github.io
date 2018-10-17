@@ -120,6 +120,6 @@
     ]
   },
   "devDependencies": {
-    "jest-dom": "^2.0.4"
+    "jest-dom": "^2.1.0"
   }
 }
