@@ -1,22 +1,55 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+  import { fade, fly } from "svelte/transition";
+  import Nav from "../components/Nav.svelte";
 
-	export let segment;
+  export let segment;
+
+  let isNav = false;
+
+  function toggle() {
+    isNav = !isNav;
+  }
+
+  // $: isNav &&
+  //   setTimeout(() => {
+  //     isNav = false;
+  //   }, 7000);
 </script>
 
 <style>
-	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+  main {
+    /* position: relative; */
+    padding: 2em;
+    margin: 60px auto 0;
+    box-sizing: border-box;
+  }
+  div {
+    position: absolute;
+    /* height: 20px; */
+    /* width: 20px; */
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: #08fbcf;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  .toggle {
+    font-size: 2rem;
+  }
 </style>
 
-<Nav {segment}/>
+{#if isNav}
+  <Nav {segment} />
+{/if}
 
-<main>
-	<slot></slot>
+{#if isNav}
+  <div class="toggle" transition:fly={{ y: -5 }} role="button" on:click={toggle}>✨</div>
+{:else}
+  <div class="toggle" transition:fly={{ y: 5 }} role="button" on:click={toggle}>⚙</div>
+{/if}
+
+<main trainsition:fade>
+  <slot />
 </main>
